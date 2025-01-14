@@ -1,0 +1,17 @@
+# Systemowe
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
