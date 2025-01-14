@@ -1,2 +1,2 @@
-def hello_world():
-    print("Hello, world!")
+def hello_world(a, b):
+    return a + b
