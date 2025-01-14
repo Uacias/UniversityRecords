@@ -38,15 +38,15 @@ class Database:
         return self.students
 
     def find_student_by_last_name(self, last_name):
-        return [student for student in self._students if student.last_name == last_name]
+        return [student for student in self.students if student.last_name == last_name]
 
     def find_student_by_pesel(self, pesel):
         return next(
-            (student for student in self._students if student.pesel == pesel), None
+            (student for student in self.students if student.pesel == pesel), None
         )
 
     def sort_students_by_last_name(self, reverse=False):
-        self._students.sort(key=lambda student: student.last_name, reverse=reverse)
+        self.students.sort(key=lambda student: student.last_name, reverse=reverse)
 
     def sort_students_by_pesel(self, reverse=False):
-        self._students.sort(key=lambda student: student.pesel, reverse=reverse)
+        self.students.sort(key=lambda student: student.pesel, reverse=reverse)
