@@ -43,6 +43,60 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(len(students), 1)
         self.assertEqual(students[0].first_name, "John")
 
+    def test_find_student_by_last_name(self):
+        student1 = Student("John", "Doe", "123 Main St", "12345", "92030512345", "M")
+        student2 = Student("Jane", "Smith", "456 Elm St", "67890", "85060712345", "F")
+        self.db.add_student(student1)
+        self.db.add_student(student2)
+
+        results = self.db.find_student_by_last_name("Doe")
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].first_name, "John")
+
+    def test_find_student_by_pesel(self):
+        student1 = Student("John", "Doe", "123 Main St", "12345", "92030512345", "M")
+        self.db.add_student(student1)
+
+        student = self.db.find_student_by_pesel("92030512345")
+        self.assertIsNotNone(student)
+        self.assertEqual(student.first_name, "John")
+
+        student = self.db.find_student_by_pesel("00000000000")
+        self.assertIsNone(student)
+
+    def test_sort_students_by_last_name(self):
+        student1 = Student("John", "Smith", "123 Main St", "12345", "92030512345", "M")
+        student2 = Student("Jane", "Doe", "456 Elm St", "67890", "85060712345", "F")
+        self.db.add_student(student1)
+        self.db.add_student(student2)
+
+        self.db.sort_students_by_last_name()
+        students = self.db.get_all_students()
+        self.assertEqual(students[0].last_name, "Doe")
+        self.assertEqual(students[1].last_name, "Smith")
+
+    def test_sort_students_by_last_name_desc(self):
+        student1 = Student("John", "Smith", "123 Main St", "12345", "92030512345", "M")
+        student2 = Student("Jane", "Doe", "456 Elm St", "67890", "85060712345", "F")
+        self.db.add_student(student1)
+        self.db.add_student(student2)
+
+        self.db.sort_students_by_last_name(reverse=True)
+        students = self.db.get_all_students()
+        self.assertEqual(students[0].last_name, "Smith")
+        self.assertEqual(students[1].last_name, "Doe")
+
+    def test_sort_students_by_pesel(self):
+        student1 = Student("John", "Doe", "123 Main St", "12345", "92030512345", "M")
+        student2 = Student("Jane", "Smith", "456 Elm St", "67890", "85060712345", "F")
+        self.db.add_student(student2)
+        self.db.add_student(student1)
+
+        self.db.sort_students_by_pesel()
+        students = self.db.get_all_students()
+        self.assertEqual(students[0].pesel, "85060712345")
+        self.assertEqual(students[1].pesel, "92030512345")
+
 
 if __name__ == "__main__":
     unittest.main()
