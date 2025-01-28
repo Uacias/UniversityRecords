@@ -46,7 +46,6 @@ def main():
                 first_name, last_name, address, index_number, pesel, gender
             )
             db.add_student(student)
-            print("Dodano studenta.")
 
         elif choice == "3":
             ln = input("Podaj nazwisko: ")

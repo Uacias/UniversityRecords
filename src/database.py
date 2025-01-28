@@ -1,5 +1,6 @@
 import json
 
+from src.pesel import validate_pesel
 from src.student import Student
 
 
@@ -25,6 +26,9 @@ class Database:
             json.dump([student.to_dict() for student in self.students], file, indent=4)
 
     def add_student(self, student):
+        if not validate_pesel(student.pesel):
+            print("Błąd: PESEL jest nieprawidłowy.")
+            return
         self.students.append(student)
         self.save()
 
@@ -60,6 +64,9 @@ class Database:
         new_pesel=None,
         new_gender=None,
     ):
+        if new_pesel and not validate_pesel(new_pesel):
+            print("Błąd: PESEL jest nieprawidłowy.")
+            return False
         for student in self.students:
             if student.index_number == index_number:
                 if new_first_name:
