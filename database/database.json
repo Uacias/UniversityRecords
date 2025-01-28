@@ -1,0 +1,26 @@
+[
+    {
+        "first_name": "Joshua",
+        "last_name": "Silva",
+        "address": "123 Apple St",
+        "index_number": "1001",
+        "pesel": "01234567890",
+        "gender": "F"
+    },
+    {
+        "first_name": "Bob",
+        "last_name": "Johnson",
+        "address": "456 Orange Ave",
+        "index_number": "1002",
+        "pesel": "12345678901",
+        "gender": "M"
+    },
+    {
+        "first_name": "Carol",
+        "last_name": "Davis",
+        "address": "789 Peach Blvd",
+        "index_number": "1003",
+        "pesel": "23456789012",
+        "gender": "F"
+    }
+]

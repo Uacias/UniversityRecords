@@ -50,3 +50,29 @@ class Database:
 
     def sort_students_by_pesel(self, reverse=False):
         self.students.sort(key=lambda student: student.pesel, reverse=reverse)
+
+    def update_student(
+        self,
+        index_number,
+        new_first_name=None,
+        new_last_name=None,
+        new_address=None,
+        new_pesel=None,
+        new_gender=None,
+    ):
+        for student in self.students:
+            if student.index_number == index_number:
+                if new_first_name:
+                    student.first_name = new_first_name
+                if new_last_name:
+                    student.last_name = new_last_name
+                if new_address:
+                    student.address = new_address
+                if new_pesel:
+                    student.pesel = new_pesel
+                if new_gender:
+                    student.gender = new_gender
+
+                self.save()
+                return True
+        return False

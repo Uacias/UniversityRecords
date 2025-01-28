@@ -97,6 +97,21 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(students[0].pesel, "85060712345")
         self.assertEqual(students[1].pesel, "92030512345")
 
+    def test_update_student(self):
+        student1 = Student("John", "Doe", "123 Main St", "12345", "92030512345", "M")
+        self.db.add_student(student1)
+
+        updated = self.db.update_student(
+            index_number="12345",
+            new_first_name="Jonathan",
+            new_address="New Address 42",
+        )
+        self.assertTrue(updated)
+        student = self.db.find_student_by_pesel("92030512345")
+        self.assertIsNotNone(student)
+        self.assertEqual(student.first_name, "Jonathan")
+        self.assertEqual(student.address, "New Address 42")
+
 
 if __name__ == "__main__":
     unittest.main()
