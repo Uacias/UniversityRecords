@@ -19,7 +19,6 @@ class TestPeselFunctions(unittest.TestCase):
                 self.assertTrue(validate_pesel(pesel))
 
     def test_validate_pesel_invalid(self):
-        # Test niepoprawnych numerów PESEL
         invalid_pesels = [
             "0x",
             "0xdeadbeefdeadbeefdeadbeefdeadbeef",
