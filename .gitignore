@@ -1,17 +1,20 @@
-# Systemowe
+venv/
+.venv/
+env/
+ENV/
+
+__pycache__/
+.pytest_cache/
+
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+.vscode/
+.idea/
+
 .DS_Store
 Thumbs.db
 
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.egg-info/
-.eggs/
-venv/
-
-# IDE
-.idea/
-.vscode/
-*.swp
+.mypy_cache/
